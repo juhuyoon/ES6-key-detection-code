@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+    <h1>Type unicorn and see what happens!</h1> 
+    <!--Key sequence detection where if you input certain keys, then another command occurs-->
+<script>
+const pressed = []; //key is pushed into this array. 
+const secretCode = 'unicorn';
+
+
+    window.addEventListener('keyup', (e) => {
+        console.log(e.key); //to know what keys are pressed. 
+        pressed.push(e.key); //pushes the pressed key into the array
+        pressed.splice(-secretCode.length -1, pressed.length - secretCode.length); //since the secret code is 6 keys, then should only need the last six keys pressed.
+        
+        if(pressed.join('').includes(secretCode)) {
+            console.log('Unicorn!');
+            cornify_add() //just a fun function from cornify.com
+        }
+        console.log(pressed);  
+
+    })
+</script>
+</body>
+</html>
